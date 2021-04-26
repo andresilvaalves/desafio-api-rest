@@ -1,0 +1,14 @@
+app:
+  message: This is the property file for the ${spring.application.name} specific to DEV Environment!!
+
+server:
+  port: 8092
+
+spring:
+  devtools:
+    add-properties: true
+    restart:
+      enabled: true
+      poll-interval: 2s
+      quiet-period: 1s
+

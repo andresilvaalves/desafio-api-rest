@@ -1,0 +1,44 @@
+#
+
+stages:
+  - maven-install
+  - docker-build
+
+maven-build:
+  image: maven:latest
+  stage: maven-install
+  script: "mvn package -B"
+  artifacts:
+    paths:
+      - target/*.jar
+  only:
+    - develop
+    - release
+    - master
+
+docker-build-master:
+  image: docker:latest
+  stage: docker-build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+
+docker-build:
+  image: docker:latest
+  stage: docker-build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  only:
+    - develop
+    - release

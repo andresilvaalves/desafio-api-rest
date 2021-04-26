@@ -1,0 +1,2 @@
+app:
+  message: This is the property file for the ${spring.application.name} specific to PRODUCTION Environment!! Be ALERT!!

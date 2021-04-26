@@ -1,0 +1,12 @@
+version: '2.0'
+services:
+  desafio-api-rest:
+    container_name: RD
+    image: rd:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: bridge
+    restart: always
+    ports:
+      - 8093:8093
