@@ -2,6 +2,9 @@
 
 - ###### André Silva Alves [andresilvaalves](https://gitlab.com/andresilvaalves "andresilvaalves")
 ---
+
+##### Utilizar JAVA 11
+
 - Para rodar localmente o docker-compose:
 ```
 $ mvn package
