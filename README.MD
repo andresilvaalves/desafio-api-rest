@@ -3,7 +3,7 @@
 - ###### André Silva Alves [andresilvaalves](https://gitlab.com/andresilvaalves "andresilvaalves")
 ---
 
-##### Utilizar JAVA 16
+##### Utilizar JAVA 11
 
 - Para rodar localmente o docker-compose:
 ```
